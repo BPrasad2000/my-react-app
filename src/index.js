@@ -1,23 +1,43 @@
+import ReactDOM from "react-dom/client";
+import { useState } from "react";
 
-import ReactDOM from 'react-dom/client';
+function Myform() {
+  const [inputs, setInputs] = useState({});
 
-const x=5;
-// let text ='Goodbye';
-// if(x<10){
-//   text ="If condition !";
-// }
-// const myElement =<h1>{text}</h1>
+  const handlechange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
 
-const myElement =<h1>{(x)<10 ? "If statement!" : "Goodbye"}</h1>
-
-
-
- 
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  myElement
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log(inputs);
+};
+return (
+  <form onSubmit={handleSubmit}>
+    <label>
+      Enter your name:
+      <input
+        type="text"
+        name="username"
+        value={inputs.username || ""}
+        onChange={handlechange}
+      />
+    </label>
+    <label>
+      Enter your age:
+      <input
+        type="number"
+        name="age"
+        value={inputs.age || ""}
+        onChange={handlechange}
+      />
+    </label>
+    <input type="submit"/>
+  </form>
 );
+}
 
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Myform/>);
