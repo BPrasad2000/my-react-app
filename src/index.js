@@ -1,33 +1,23 @@
-import React from 'react';
+
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
-import Layout from './pages/Layout';
-import Home from './pages/Home';
-import Blogs from './pages/Blogs';
-import Contact from './pages/Contact';
-import NoPage from './pages/NoPage';
+
+const x=5;
+// let text ='Goodbye';
+// if(x<10){
+//   text ="If condition !";
+// }
+// const myElement =<h1>{text}</h1>
+
+const myElement =<h1>{(x)<10 ? "If statement!" : "Goodbye"}</h1>
 
 
 
-export default function App(){
-  return(
-    <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Layout/>}/>
-      <Route index element={<Home/>}/>
-      <Route path="blogs" element={<Blogs/>}/>
-      <Route path="contact" element={<Contact/>}/>
-      <Route path="*" element={<NoPage/>}/>
-      
-    </Routes>
-    </BrowserRouter>
-  )
-}
+ 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App/>
+  myElement
 );
 
 
